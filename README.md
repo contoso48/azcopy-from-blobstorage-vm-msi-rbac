@@ -17,11 +17,12 @@ This example uses Windows Server as the OS.  Linux VMs in Azure also support Sys
 - Ensure the Azure VM can reach EntraID URLs to login.  Using Storage Account Key (SAS) does not neede EntraID URL firewall allow access, but this example does require it. 
 
 # TASKS
-- Create a script file to run on the VM (Windows PowerShell extension used as example):  
-        Example:   **C:\path\azcopyfile.ps1**
-- Use the following AZCOPY commands in this script file to "authorize" using the VM's identity and to then "copy" or "sync" files from a blob storage container.  Note that other AZCOPY command options can be used once authorized, not just the "sync" example below.  
-        **azcopy login --login-type=MSI
-        azcopy sync https://<storageaccountname>.blob.core.windows.net/<containername> "C:\demo" --recursive  --delete-destination=true**
+- Create a script file to run on the VM (Windows PowerShell extension used as example)  
+- Example:   **C:\path\azcopyfile.ps1**
+- Use the following AZCOPY commands in this script file to "authorize" using the VM's identity and to then "copy" or "sync" files from a blob storage container.  Note that other AZCOPY command options can be used once authorized, not just the "sync" example below.
+                - **azcopy login --login-type=MSI  
+                - azcopy sync https://<storageaccountname>.blob.core.windows.net/<containername> "C:\demo" --recursive  --delete-destination=true**  
+
 
 ## NOTES on TASKS
 - Used "--recursive" to copy the subfolders
@@ -49,7 +50,3 @@ This example uses Windows Server as the OS.  Linux VMs in Azure also support Sys
 - https://learn.microsoft.com/en-us/azure/storage/common/storage-ref-azcopy-copy
 - https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/how-to-assign-managed-identity-via-azure-policy
 
-
-REFERNCE LINKS
-- https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-blobs-download
-- https://learn.microsoft.com/en-us/azure/storage/common/storage-ref-azcopy-copy
