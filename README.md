@@ -34,17 +34,17 @@ NOTES on TASKS
 
 RUN IN BACKGROUND TASK OPTION
 - To run this as a background task using the Windows Task Scheduler, for example, consider these steps
-
-Open Task Scheduler:
+- Open Task Scheduler
 - Click on the Windows logo, search for Task Scheduler in the Start menu, and open it.
-Create a New Task:
-o Click on "Create Basic Task" in the right sidebar.
-o Enter a name for the task and click Next.
-o Choose "When the computer starts" as the trigger and click Next.  Alternatively, you can use other trigger options of when to run the task, such as when the user logs-in or -out, or on a schedule, etc. 
-o Select "Start a program" as the action and click Next.
-o In the "Program/script" field, enter **powershell.exe**.
-o In the "Add arguments" field, enter **-File "C:\path\azcopyfile.ps1"**
-o Click Next and then Finish to create the task.
+- Create a New Task
+- Click on "Create Basic Task" in the right sidebar  
+- Enter a name for the task and click Next.
+- Choose "When the computer starts" as the trigger and click Next.  Alternatively, you can use other trigger options of when to run the task, such as when the user logs-in or -out, or on a schedule, etc. 
+- Select "Start a program" as the action and click Next.
+- In the "Program/script" field, enter **powershell.exe**.
+- In the "Add arguments" field, enter **-File "C:\path\azcopyfile.ps1"**
+- Click Next and then Finish to create the task.
+
 
 
 REFERNCE LINKS
