@@ -42,7 +42,7 @@ This example uses Windows Server as the OS.  Linux VMs in Azure also support Sys
 - Choose "When the computer starts" as the trigger and click Next.  Alternatively, you can use other trigger options of when to run the task, such as when the user logs-in or -out, or on a schedule, etc. 
 - Select "Start a program" as the action and click Next.
 - In the "Program/script" field, enter **powershell.exe**.
-- In the "Add arguments" field, enter **-File "C:\path\azcopyfile.ps1"**
+- In the "Add arguments" field, enter **-File "C:\demo\azcopyfile.ps1"**
 - Click Next and then Finish to create the task.
 
 # LINKS
