@@ -17,33 +17,34 @@ PREREQUISITES
 - Ensure the Azure VM can reach EntraID URLs to login.  Using Storage Account Key (SAS) does not neede EntraID URL firewall allow access, but this example does require it. 
 
 TASKS
-Create a script file to run on the VM (Windows PowerShell extension used as example):
-- Example:   **C:\path\azcopyfile.ps1**
-Use the following AZCOPY commands in this script file to "authorize" using the VM's identity and to then "copy" or "sync" files from a blob storage container.  Note that other AZCOPY command options can be used once authorized, not just the "sync" example below.
+- Create a script file to run on the VM (Windows PowerShell extension used as example):
+   Example:   **C:\path\azcopyfile.ps1**
+- Use the following AZCOPY commands in this script file to "authorize" using the VM's identity and to then "copy" or "sync" files from a blob storage container.  Note that other AZCOPY command options can be used once authorized, not just the "sync" example below.
 **azcopy login --login-type=MSI
 azcopy sync https://<storageaccountname>.blob.core.windows.net/<containername> "C:\demo" --recursive  --delete-destination=true**
 
 NOTES on TASKS
-Used "--recursive" to copy the subfolders
-Used "--delete-destination=true" to match the existence or removal of files on the "master" Azure blob storage container.  This is optional, but did confirm that it removes files locally if not present in the blob storage container. 
+- Used "--recursive" to copy the subfolders
+- Used "--delete-destination=true" to match the existence or removal of files on the "master" Azure blob storage container.  This is optional, but did confirm that it removes files locally if not present in the blob storage container. 
 "--login-type" is new and replaces "--Identity".  
-This is not a production-ready example with any error catches nor any monitoring
-Also note that this is not SMB/CIFS and thus does not preserve any NTFS permissions. 
-It uses HTTPS blob transfer, so it is not as latency sensitive as SMB/CIFS traffic
+- This is not a production-ready example with any error catches nor any monitoring
+- Also note that this is not SMB/CIFS and thus does not preserve any NTFS permissions. 
+- It uses HTTPS blob transfer, so it is not as latency sensitive as SMB/CIFS traffic
 
 
 RUN IN BACKGROUND TASK OPTION
-To run this as a background task using the Windows Task Scheduler, for example, consider these steps: 
+- To run this as a background task using the Windows Task Scheduler, for example, consider these steps
+
 Open Task Scheduler:
 - Click on the Windows logo, search for Task Scheduler in the Start menu, and open it.
 Create a New Task:
-• Click on "Create Basic Task" in the right sidebar.
-• Enter a name for the task and click Next.
-• Choose "When the computer starts" as the trigger and click Next.  Alternatively, you can use other trigger options of when to run the task, such as when the user logs-in or -out, or on a schedule, etc. 
-• Select "Start a program" as the action and click Next.
-• In the "Program/script" field, enter **powershell.exe**.
-• In the "Add arguments" field, enter **-File "C:\path\azcopyfile.ps1"**
-• Click Next and then Finish to create the task.
+o Click on "Create Basic Task" in the right sidebar.
+o Enter a name for the task and click Next.
+o Choose "When the computer starts" as the trigger and click Next.  Alternatively, you can use other trigger options of when to run the task, such as when the user logs-in or -out, or on a schedule, etc. 
+o Select "Start a program" as the action and click Next.
+o In the "Program/script" field, enter **powershell.exe**.
+o In the "Add arguments" field, enter **-File "C:\path\azcopyfile.ps1"**
+o Click Next and then Finish to create the task.
 
 
 REFERNCE LINKS
