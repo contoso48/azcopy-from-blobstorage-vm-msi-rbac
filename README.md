@@ -20,13 +20,13 @@ TASKS
 - Create a script file to run on the VM (Windows PowerShell extension used as example):
    Example:   **C:\path\azcopyfile.ps1**
 - Use the following AZCOPY commands in this script file to "authorize" using the VM's identity and to then "copy" or "sync" files from a blob storage container.  Note that other AZCOPY command options can be used once authorized, not just the "sync" example below.
-**azcopy login --login-type=MSI
-azcopy sync https://<storageaccountname>.blob.core.windows.net/<containername> "C:\demo" --recursive  --delete-destination=true**
+  **azcopy login --login-type=MSI
+  azcopy sync https://<storageaccountname>.blob.core.windows.net/<containername> "C:\demo" --recursive  --delete-destination=true**
 
 NOTES on TASKS
 - Used "--recursive" to copy the subfolders
 - Used "--delete-destination=true" to match the existence or removal of files on the "master" Azure blob storage container.  This is optional, but did confirm that it removes files locally if not present in the blob storage container. 
-"--login-type" is new and replaces "--Identity".  
+- Used "--login-type" is new and replaces "--Identity", which may still works until deprecated
 - This is not a production-ready example with any error catches nor any monitoring
 - Also note that this is not SMB/CIFS and thus does not preserve any NTFS permissions. 
 - It uses HTTPS blob transfer, so it is not as latency sensitive as SMB/CIFS traffic
