@@ -20,11 +20,8 @@ This example uses Windows Server as the OS.  Linux VMs in Azure also support Sys
 - Create a script file to run on the VM (Windows PowerShell extension used as example)  
     Example:   **C:\path\azcopyfile.ps1**
 - Use the following AZCOPY commands in this script file to "authorize" using the VM's identity and to then "copy" or "sync" files from a blob storage container.  Note that other AZCOPY command options can be used once authorized, not just the "sync" example below  
-
-    **azcopy login --login-type=MSI**
-    **azcopy sync https://<storageaccountname>.blob.core.windows.net/<containername> "C:\demo" --recursive  --delete-destination=true**  
-
-
+- **azcopy login --login-type=MSI**
+- **azcopy sync https://<storageaccountname>.blob.core.windows.net/<containername> "C:\demo" --recursive  --delete-destination=true**  
 
 ## NOTES on TASKS
 - Used "--recursive" to copy the subfolders
